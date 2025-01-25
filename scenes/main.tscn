@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnu41q54wdxor"]
+[gd_scene load_steps=3 format=3 uid="uid://cnu41q54wdxor"]
 
 [ext_resource type="PackedScene" uid="uid://c3n8v6tuebklg" path="res://scenes/cubicle.tscn" id="1_5su8m"]
+[ext_resource type="PackedScene" uid="uid://dgb5nci5nk2lk" path="res://scenes/player.tscn" id="2_tph2n"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Cubicle" parent="." instance=ExtResource("1_5su8m")]
+
+[node name="Player" parent="." instance=ExtResource("2_tph2n")]
+transform = Transform3D(0.724785, 0, 0.688975, 0, 1, 0, -0.688975, 0, 0.724785, 0, 1.15241, 0)

@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3n8v6tuebklg"]
+[gd_scene load_steps=8 format=3 uid="uid://c3n8v6tuebklg"]
 
 [ext_resource type="PackedScene" uid="uid://crx4dftjfrkon" path="res://office_assets/scene.gltf" id="1_inlig"]
 [ext_resource type="Script" path="res://scenes/cubicle.gd" id="2_lhw8d"]
+[ext_resource type="Script" path="res://scenes/graph.gd" id="3_vj3i6"]
+[ext_resource type="Script" path="res://scenes/price_text.gd" id="4_w8u0n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2b23"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mrc7a"]
+size = Vector2(2.6, 2)
+orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3vlr"]
 
@@ -9,16 +17,22 @@
 script = ExtResource("2_lhw8d")
 
 [node name="Glowing Screen_Screen Emission_0" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen" index="0"]
+material_override = SubResource("StandardMaterial3D_l2b23")
+mesh = SubResource("PlaneMesh_mrc7a")
 surface_material_override/0 = SubResource("StandardMaterial3D_p3vlr")
 
 [node name="SubViewport" type="SubViewport" parent="." index="1"]
 
 [node name="Graph" type="Node2D" parent="SubViewport" index="0"]
+script = ExtResource("3_vj3i6")
 
 [node name="NewPriceTimer" type="Timer" parent="SubViewport/Graph" index="0"]
+wait_time = 0.17
+one_shot = true
 
 [node name="TextElements" type="Node2D" parent="SubViewport" index="1"]
 
 [node name="PriceText" type="Label" parent="SubViewport/TextElements" index="0"]
 offset_right = 40.0
 offset_bottom = 23.0
+script = ExtResource("4_w8u0n")
