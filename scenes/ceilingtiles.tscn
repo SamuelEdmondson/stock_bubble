@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhhxhxw5g40n2"]
+[gd_scene load_steps=3 format=3 uid="uid://bhhxhxw5g40n2"]
 
 [ext_resource type="PackedScene" uid="uid://bi26dqkittfj0" path="res://ceiling_assets/scene.gltf" id="1_mprtv"]
+[ext_resource type="PackedScene" uid="uid://dnasa5gtdnwws" path="res://scenes/ceiling_light.tscn" id="2_8pvli"]
 
 [node name="Ceiling_Tiles" instance=ExtResource("1_mprtv")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 6.84098, 3.32993, 0)
 
 [node name="Object_2" parent="Sketchfab_model/CeilingTileDemo_obj_cleaner_materialmerger_gles" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -230, 0)
+
+[node name="Ceiling_Light" parent="." index="1" instance=ExtResource("2_8pvli")]
+transform = Transform3D(-10, 8.74228e-07, 0, -8.74228e-07, -10, 0, 0, 0, 10, -1.85011, 11.8129, -0.0560737)

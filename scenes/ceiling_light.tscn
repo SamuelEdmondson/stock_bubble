@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnasa5gtdnwws"]
+
+[ext_resource type="PackedScene" uid="uid://m071wkds0p0m" path="res://light_assets/scene.gltf" id="1_ph7rq"]
+
+[node name="Ceiling_Light" instance=ExtResource("1_ph7rq")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CeilingLight_Light_0" parent="Sketchfab_model/CeilingLight01_high_fbx/RootNode/CeilingLight" index="1"]
+gi_lightmap_scale = 3
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Sketchfab_model/CeilingLight01_high_fbx/RootNode/CeilingLight" index="4"]
+transform = Transform3D(1, 1.81613e-08, -1.72938e-07, -1.81613e-08, -0.978184, -0.207741, -1.72938e-07, 0.207741, -0.978184, 2.01001e-08, -3.74585e-08, 0.229918)
+visible = false
+light_energy = 0.05
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sketchfab_model/CeilingLight01_high_fbx/RootNode/CeilingLight" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11111e-08, -2.07065e-08, 0.127096)
+shadow_enabled = true
