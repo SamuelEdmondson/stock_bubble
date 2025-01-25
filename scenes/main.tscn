@@ -1,17 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnu41q54wdxor"]
+[gd_scene load_steps=7 format=3 uid="uid://cnu41q54wdxor"]
 
 [ext_resource type="PackedScene" uid="uid://c3n8v6tuebklg" path="res://scenes/cubicle.tscn" id="1_5su8m"]
 [ext_resource type="PackedScene" uid="uid://dgb5nci5nk2lk" path="res://scenes/player.tscn" id="2_tph2n"]
 [ext_resource type="PackedScene" uid="uid://bhhxhxw5g40n2" path="res://scenes/ceilingtiles.tscn" id="3_4hfco"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1n7hi"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_energy_multiplier = 0.0
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uhglx"]
+sky_material = SubResource("ProceduralSkyMaterial_1n7hi")
+
+[sub_resource type="Environment" id="Environment_plj0i"]
+background_mode = 2
+sky = SubResource("Sky_uhglx")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_plj0i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.0
+shadow_enabled = true
 
 [node name="Cubicle" parent="." instance=ExtResource("1_5su8m")]
 
 [node name="Player" parent="." instance=ExtResource("2_tph2n")]
-transform = Transform3D(0.724785, 0, 0.688975, 0, 1, 0, -0.688975, 0, 0.724785, -0.406199, 1.20295, -0.403887)
+transform = Transform3D(0.724785, 0, 0.688975, 0, 1, 0, -0.688975, 0, 0.724785, -0.298879, 1.21533, -0.260191)
 
 [node name="Ceiling_Tiles" parent="." instance=ExtResource("3_4hfco")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.307993, 0.132992, 0)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.13848, 0.132992, -1.19549)
 
 [connection signal="on_keyboard_press" from="Player" to="Cubicle" method="_on_player_on_keyboard_press"]

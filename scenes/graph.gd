@@ -49,7 +49,7 @@ func _process(delta):
 	
 func _draw() -> void:
 	draw_rect(Rect2(Vector2(0, 0), Vector2(600, 600)), Color("0C2A29"))
-	draw_polyline(points, Color("24EAC9"), 3, true)
+	draw_polyline(points, Color("24EAC9"), 6, true)
 	for point in points:
 		draw_circle(point, 2, Color.BLACK, true, 1)
 	
