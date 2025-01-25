@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3n8v6tuebklg"]
+[gd_scene load_steps=9 format=3 uid="uid://c3n8v6tuebklg"]
 
 [ext_resource type="PackedScene" uid="uid://crx4dftjfrkon" path="res://office_assets/scene.gltf" id="1_inlig"]
 [ext_resource type="Script" path="res://scenes/cubicle.gd" id="2_lhw8d"]
 [ext_resource type="Script" path="res://scenes/graph.gd" id="3_vj3i6"]
 [ext_resource type="Script" path="res://scenes/price_text.gd" id="4_w8u0n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3lqt"]
+size = Vector3(1.47052, 0.105896, 0.717773)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2b23"]
 
@@ -15,6 +18,21 @@ orientation = 2
 
 [node name="Cubicle" instance=ExtResource("1_inlig")]
 script = ExtResource("2_lhw8d")
+
+[node name="Burger Bag_Bag_0" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Burger Bag" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.02141e-14, 0, -1.06581e-14, 1, -1.29751, 0, 0.488427)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Keyboard/Keyboard_PC Monitor amd Keyboard_0" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Keyboard/Keyboard_PC Monitor amd Keyboard_0/StaticBody3D" index="0"]
+transform = Transform3D(-0.999905, -3.60995e-08, 0.0138038, 0.0138038, -1.17711e-07, 0.999905, -3.44711e-08, 1, 1.18198e-07, 0.160772, -0.0553603, -0.00547576)
+shape = SubResource("BoxShape3D_c3lqt")
+
+[node name="Coffee Cup_Coffee Cup_0" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Coffee Cup" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 4.70397, -8.3121, -9.53674e-07)
+
+[node name="Steam_Steam_0" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Steam" index="0"]
+transform = Transform3D(1, -4.76456e-22, 1.35401e-23, -4.76456e-22, 1, 0, 1.45588e-23, 0, 1, 0, -6.86551, 1.58014)
 
 [node name="Glowing Screen_Screen Emission_0" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen" index="0"]
 transform = Transform3D(1, 3.55271e-15, 0, 0, 1, 1.77636e-15, 0, -8.88178e-15, 1, 0.0260942, 0, -0.0531521)
