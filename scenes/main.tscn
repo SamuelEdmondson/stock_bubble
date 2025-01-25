@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://cnu41q54wdxor"]
+[gd_scene load_steps=2 format=3 uid="uid://cnu41q54wdxor"]
+
+[ext_resource type="PackedScene" uid="uid://c3n8v6tuebklg" path="res://scenes/cubicle.tscn" id="1_5su8m"]
 
 [node name="Main" type="Node3D"]
+
+[node name="Cubicle" parent="." instance=ExtResource("1_5su8m")]
