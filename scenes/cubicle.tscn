@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3n8v6tuebklg"]
+
+[ext_resource type="PackedScene" uid="uid://crx4dftjfrkon" path="res://office_assets/scene.gltf" id="1_inlig"]
+
+[node name="Cubicle" instance=ExtResource("1_inlig")]
