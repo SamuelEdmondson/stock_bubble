@@ -20,11 +20,12 @@ func _process(delta):
 	if points.size() > 30:
 		points.pop_front()
 	for i in range(points.size()):
-			points[i].x = points[i].x - 25*delta
+			points[i].x = points[i].x - 5*delta
 			
 	queue_redraw()
 	
 	if ($NewPriceTimer.is_stopped()):
+		$NewPriceTimer.wait_time = randf_range(1, 5)
 		$NewPriceTimer.start()
 		currentPrice = lastPrice + randi_range(-50, 50)
 		var shiftValue = lastPrice - currentPrice
@@ -37,7 +38,7 @@ func _process(delta):
 		for i in range(points.size()):
 			points[i].y = points[i].y - shiftValue
 		
-		points.append(Vector2(400, 200))
+		points.append(Vector2(195, 100))
 		counter += 1
 		lastPrice = currentPrice
 		queue_redraw()
@@ -46,9 +47,8 @@ func _process(delta):
 			#points[i].x = points[i].x - 12
 	
 func _draw() -> void:
-	
-	draw_rect(Rect2(Vector2(0, 0), Vector2(600, 600)), Color.ANTIQUE_WHITE)
-	draw_polyline(points, Color.ORANGE_RED, 10, false)
+	draw_rect(Rect2(Vector2(0, 0), Vector2(600, 600)), Color("0C2A29"))
+	draw_polyline(points, Color("24EAC9"), 3, true)
 	for point in points:
 		draw_circle(point, 2, Color.BLACK, true, 1)
 	
