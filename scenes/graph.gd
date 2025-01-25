@@ -5,6 +5,7 @@ var counter = 0
 var lastPrice = 1000
 var currentPrice
 
+@export var is_currently_bought = false
 @export var texture: Texture2D
 @export var background_color: Color
 

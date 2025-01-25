@@ -13,3 +13,5 @@ transform = Transform3D(0.724785, 0, 0.688975, 0, 1, 0, -0.688975, 0, 0.724785, 
 
 [node name="Ceiling_Tiles" parent="." instance=ExtResource("3_4hfco")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.307993, 0.132992, 0)
+
+[connection signal="on_keyboard_press" from="Player" to="Cubicle" method="_on_player_on_keyboard_press"]

@@ -1,4 +1,5 @@
 extends Node3D
+signal on_keyboard_press
 
 @onready var camera = $Camera
 var rayOrigin = Vector3()
@@ -18,5 +19,5 @@ func _physics_process(delta: float):
 	query.collide_with_areas = true
 	var result = space_state.intersect_ray(query)
 	
-	if result:
-		print("Hit at point: ", result.position)
+	if result && Input.is_action_just_pressed("click"):
+		on_keyboard_press.emit()
