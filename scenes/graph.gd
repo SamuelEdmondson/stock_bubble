@@ -27,7 +27,7 @@ func _process(delta):
 	if ($NewPriceTimer.is_stopped()):
 		$NewPriceTimer.wait_time = randf_range(1, 5)
 		$NewPriceTimer.start()
-		currentPrice = lastPrice + randi_range(-50, 50)
+		currentPrice = lastPrice + randi_range(-25, 25)
 		var shiftValue = lastPrice - currentPrice
 		
 		if (currentPrice >= lastPrice):
