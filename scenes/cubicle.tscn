@@ -26,6 +26,8 @@ transform = Transform3D(6.66321, -2.41585e-13, 0, 2.41585e-13, 6.66321, 8.52651e
 light_energy = 0.105
 light_indirect_energy = 4.68
 light_volumetric_fog_energy = 0.0
+light_size = 1.0
+shadow_enabled = true
 
 [node name="SubViewport" type="SubViewport" parent="." index="1"]
 
