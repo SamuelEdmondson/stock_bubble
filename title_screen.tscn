@@ -1,30 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds4vrslvakxo8"]
+[gd_scene load_steps=5 format=3 uid="uid://ds4vrslvakxo8"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_4h2k7"]
 [ext_resource type="PackedScene" uid="uid://bf2aiy4y7xrkf" path="res://scenes/MenuOffice.tscn" id="1_yii0s"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="2_utb01"]
 [ext_resource type="AudioStream" uid="uid://bmsh4kochb5hk" path="res://office.ogg" id="4_m0slw"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8q07p"]
-viewport_path = NodePath("Sprite3D/SubViewport")
-
 [node name="TitleScreen" type="Node3D"]
 script = ExtResource("1_4h2k7")
 
 [node name="Main" parent="." instance=ExtResource("1_yii0s")]
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.582153, -0.450518, 0.676854, 0, 0.832457, 0.554089, -0.813079, -0.322564, 0.484617, 0.18488, 1.46179, 0.0952075)
-texture = SubResource("ViewportTexture_8q07p")
-
-[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
-transparent_bg = true
-
-[node name="ProgressBar" type="ProgressBar" parent="Sprite3D/SubViewport"]
-offset_right = 1000.0
-offset_bottom = 100.0
-step = 1.0
-value = 50.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.42028, 0.170838, 0.891167, 0, 0.982117, -0.188273, -0.907395, 0.0791275, 0.412764, 0.211192, 0.962352, -0.451527)

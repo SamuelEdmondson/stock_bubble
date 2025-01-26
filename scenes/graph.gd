@@ -58,7 +58,7 @@ func _process(delta):
 		is_in_positive_market_shift = false
 		is_in_negative_market_shift = false
 		is_in_bubble_market_shift = false
-		$MarketEventTimer.wait_time = randf_range(3, 10)
+		$MarketEventTimer.wait_time = randf_range(5, 10)
 		$MarketEventTimer.start()
 		print("stopped")
 		var num = randi_range(0, 11)
