@@ -39,20 +39,20 @@ func _process(delta):
 	if points.size() > 30:
 		points.pop_front()
 	for i in range(points.size()):
-			points[i].x = points[i].x - 5*delta
+			points[i].x = points[i].x - 20*delta
 			
 	queue_redraw()
 	
 	if ($MarketEventTimer.is_stopped()):
 		$MarketEventTimer.start()
 		print("stopped")
-		var num = randi_range(0, 10)
+		var num = randi_range(0, 5)
 		if num == 1:
 			bubble_market_shift()
-		if num in range(2, 6):
+		elif num in range(2, 4):
 			positive_market_shift()
 		else:
-			negative_market_shift()
+			bubble_market_shift()
 		
 	if ($NewPriceTimer.is_stopped()):
 		#$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Light".blink_positive_light()
@@ -119,6 +119,7 @@ func positive_market_shift():
 func bubble_market_shift():
 	is_in_bubble_market_shift = true
 	$BubbleShiftTimer.start()
+	print("blinking bubble light")
 	$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Light".blink_bubble_light()
 
 func negative_market_shift():

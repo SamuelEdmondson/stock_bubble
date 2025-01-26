@@ -73,7 +73,7 @@ script = ExtResource("3_lmec5")
 positive_color = Color(0.440646, 0.802349, 1, 1)
 negative_color = Color(0.940097, 0.934591, 7.70092e-07, 1)
 bubble_color = Color(0.847059, 0.0980392, 0, 1)
-bubble_energy = 1.5
+bubble_blink_interval = 0.1
 
 [node name="LightEmission" type="SpotLight3D" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Light" index="0"]
 transform = Transform3D(-0.882396, 0.469563, -0.0297953, 0.375801, 0.741473, 0.555871, 0.283109, 0.479301, -0.830735, -0.00306103, 0, 0.00904572)
