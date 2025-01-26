@@ -48,7 +48,7 @@ func _process(delta):
 		lastPrice = currentPrice
 		
 		if (display_percentage):
-			$"../TextElements/ProfitLabels/Percentage".update_percentage(currentPrice*1.0 / bought_price*1.0)
+			$"../TextElements/ProfitLabels/Percentage".update_percentage(-1 + (currentPrice*1.0 / bought_price*1.0))
 			$"../TextElements/ProfitLabels/Profit".update_profit((currentPrice*1.0 / bought_price*1.0) * bought_with_money*1.0 - bought_with_money)
 			
 		queue_redraw()
@@ -67,7 +67,7 @@ func buy_stock(money: int):
 	print("bought at " + str(bought_price))
 	display_percentage = true
 	bought_with_money = money
-	$"../TextElements/ProfitLabels/Percentage".update_percentage(currentPrice*1.0 / bought_price*1.0)
+	$"../TextElements/ProfitLabels/Percentage".update_percentage(0)
 	$"../TextElements/ProfitLabels/Profit".update_profit(0)
 	
 	
