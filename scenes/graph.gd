@@ -8,19 +8,33 @@ var bought_price
 var sold_price
 var bought_with_money
 
+var is_in_positive_market_shift = false
+var is_in_negative_market_shift = false
+var is_in_bubble_market_shift = false
+
 @export var display_percentage = false
 @export var is_currently_bought = false
 @export var texture: Texture2D
 @export var background_color: Color
 
 func _ready():
-	pass
+	$MarketEventTimer.start()
 	#var counter = 0
 	#while (counter < 50):
 		#points.append(Vector2(counter*12, randf_range(0, 400)))
 		#counter += 1
 
 func _process(delta):
+	
+	if ($PositiveShiftTimer.is_stopped()):
+		#print("is_in_positive_market_shift is set to false")
+		is_in_positive_market_shift = false
+	if ($NegativeShiftTimer.is_stopped()):
+		#print("is_in_negative_market_shift is set to false")
+		is_in_negative_market_shift = false
+	if ($BubbleShiftTimer.is_stopped()):
+		#print("is_in_bubble_market_shift is set to false")
+		is_in_bubble_market_shift = false
 	
 	if points.size() > 30:
 		points.pop_front()
@@ -29,11 +43,22 @@ func _process(delta):
 			
 	queue_redraw()
 	
+	if ($MarketEventTimer.is_stopped()):
+		$MarketEventTimer.start()
+		print("stopped")
+		var num = randi_range(0, 10)
+		if num == 1:
+			bubble_market_shift()
+		if num in range(2, 6):
+			positive_market_shift()
+		else:
+			negative_market_shift()
+		
 	if ($NewPriceTimer.is_stopped()):
-		$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/RedLight".blink_light()
-		$NewPriceTimer.wait_time = randf_range(1, 5)
+		#$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Light".blink_positive_light()
+		$NewPriceTimer.wait_time = randf_range(.5, 1.5)
 		$NewPriceTimer.start()
-		currentPrice = lastPrice + randi_range(-5, 5)
+		currentPrice = generate_next_price()
 		var shiftValue = lastPrice - currentPrice
 		
 		if (currentPrice >= lastPrice):
@@ -58,10 +83,10 @@ func _process(delta):
 			#points[i].x = points[i].x - 12
 	
 func _draw() -> void:
-	draw_rect(Rect2(Vector2(0, 0), Vector2(600, 600)), Color("0C2A29"))
-	draw_polyline(points, Color("24EAC9"), 2, true)
-	for point in points:
-		draw_circle(point, 2, Color.BLACK, true, 1)
+	draw_rect(Rect2(Vector2(0, 0), Vector2(600, 600)), Color("000000"))
+	draw_polyline(points, Color("1DF649"), 2, true)
+	#for point in points:
+		#draw_circle(point, 2, Color.BLACK, true, 1)
 	
 func buy_stock(money: int):
 	bought_price = currentPrice
@@ -85,3 +110,35 @@ func sell_stock():
 	$"../TextElements/Cash".update_cash(round(returned_money))
 	$"../TextElements/Portfolio".update_portfolio(0)
 	return returned_money
+
+func positive_market_shift():
+	is_in_positive_market_shift = true
+	$PositiveShiftTimer.start()
+	$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Light".blink_positive_light()
+	
+func bubble_market_shift():
+	is_in_bubble_market_shift = true
+	$BubbleShiftTimer.start()
+	$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Light".blink_bubble_light()
+
+func negative_market_shift():
+	is_in_negative_market_shift = true
+	$NegativeShiftTimer.start()
+	$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Light".blink_negative_light()
+
+func generate_next_price():
+	if is_in_positive_market_shift:
+		print("generated positive")
+		return lastPrice + randi_range(0, 30)
+		
+	if is_in_negative_market_shift:
+		print("generated negative")
+		return lastPrice + randi_range(-30, 0)
+		
+	if is_in_bubble_market_shift:
+		print("generated bubble")
+		return lastPrice + randi_range(-60, 0)
+	
+	else:
+		print("generated normal")
+		return lastPrice + randi_range(-5, 5)

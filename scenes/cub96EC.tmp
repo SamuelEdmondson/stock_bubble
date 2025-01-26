@@ -92,7 +92,6 @@ wait_time = 2.323
 one_shot = true
 
 [node name="MarketEventTimer" type="Timer" parent="SubViewport/Graph" index="1"]
-wait_time = 10.0
 one_shot = true
 
 [node name="BubbleShiftTimer" type="Timer" parent="SubViewport/Graph" index="2"]
@@ -100,11 +99,11 @@ wait_time = 6.0
 one_shot = true
 
 [node name="PositiveShiftTimer" type="Timer" parent="SubViewport/Graph" index="3"]
-wait_time = 5.0
+wait_time = 0.19
 one_shot = true
 
 [node name="NegativeShiftTimer" type="Timer" parent="SubViewport/Graph" index="4"]
-wait_time = 5.0
+wait_time = 0.513
 one_shot = true
 
 [node name="TextElements" type="Node2D" parent="SubViewport" index="1"]
