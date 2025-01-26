@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3n8v6tuebklg"]
+[gd_scene load_steps=16 format=3 uid="uid://c3n8v6tuebklg"]
 
 [ext_resource type="PackedScene" uid="uid://crx4dftjfrkon" path="res://office_assets/scene.gltf" id="1_inlig"]
 [ext_resource type="Script" path="res://scenes/cubicle.gd" id="2_lhw8d"]
@@ -25,8 +25,6 @@ size = Vector2(2.6, 1.98)
 orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j6yv"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_67pv2"]
 
 [node name="Cubicle" instance=ExtResource("1_inlig")]
 script = ExtResource("2_lhw8d")
@@ -134,7 +132,6 @@ offset_left = 117.765
 offset_top = 156.4
 offset_right = 190.765
 offset_bottom = 179.4
-label_settings = SubResource("LabelSettings_67pv2")
 script = ExtResource("9_vm2i4")
 
 [node name="FeeTimerLeft" type="Label" parent="SubViewport/TextElements/ProfitLabels" index="3"]
