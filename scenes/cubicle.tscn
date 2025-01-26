@@ -124,7 +124,7 @@ script = ExtResource("6_ku3mi")
 [node name="DailyQuota" type="Label" parent="SubViewport/TextElements" index="1"]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Quota: $50000"
+text = "Quota: $10000"
 
 [node name="Cash" type="Label" parent="SubViewport/TextElements" index="2"]
 offset_top = 20.0

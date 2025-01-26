@@ -7,7 +7,7 @@ var currentPrice
 var bought_price
 var sold_price
 var bought_with_money
-var quota = 10
+var quota = 10000
 
 signal won_game
 
@@ -117,6 +117,9 @@ func sell_stock():
 	#end game if they are above amount:
 	if returned_money >= quota:
 		get_tree().change_scene_to_file("res://you_won.tscn")
+		
+	if returned_money < 100:
+		get_tree().change_scene_to_file("res://quota_unmet.tscn")
 	return returned_money
 
 func positive_market_shift():

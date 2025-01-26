@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgpstdbwjbedw"]
+
+[ext_resource type="AudioStream" uid="uid://b3wpdohtccubx" path="res://quota unmet.wav" id="1_67c6m"]
+[ext_resource type="Script" path="res://quota_unmet.gd" id="1_uiyj1"]
+
+[node name="quota_unmet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uiyj1")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUOTA UNMET!"
+
+[node name="LosingMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_67c6m")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
