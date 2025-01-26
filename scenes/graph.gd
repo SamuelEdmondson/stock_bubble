@@ -2,7 +2,7 @@ extends Node2D
 
 var points = []
 var counter = 0
-var lastPrice = round(9223372036854775807 * .5)
+var lastPrice = 9223372036854775807 * .5
 var currentPrice
 var bought_price
 var sold_price
@@ -61,10 +61,7 @@ func _process(delta):
 		currentPrice = generate_next_price()
 		var shiftRatio = (currentPrice*1.0) / (lastPrice*1.0)
 		var shiftValue = log(lastPrice) - log(currentPrice)
-		if (currentPrice >= lastPrice):
-			$"../TextElements/PriceText".show_price_green(str(currentPrice))
-		else:
-			$"../TextElements/PriceText".show_price_red(str(currentPrice))
+		
 		
 		for i in range(points.size()):
 			points[i].y = points[i].y - shiftValue*200
@@ -130,18 +127,18 @@ func negative_market_shift():
 func generate_next_price():
 	if is_in_positive_market_shift:
 		print("generated positive")
-		return round(lastPrice * randf_range(1, 1.05))
+		return lastPrice * randf_range(1, 1.05)
 		
 	if is_in_negative_market_shift:
 		print("generated negative")
-		return round(lastPrice * randf_range(.95, 0))
+		return lastPrice * randf_range(.95, 0)
 		
 	if is_in_bubble_market_shift:
 		print(lastPrice)
 		print("generated bubble")
-		return round(lastPrice * randf_range(.7, 0))
+		return lastPrice * randf_range(.7, 0)
 	
 	else:
 		print("generated normal")
 		print(lastPrice)
-		return round(lastPrice * randf_range(.95, 1.05))
+		return lastPrice * randf_range(.95, 1.05)
