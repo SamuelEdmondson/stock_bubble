@@ -1,7 +1,11 @@
 extends Node3D
-var starting_money = 2700
+var money = 2700
+var stock_bought = false
 
-func _on_player_on_keyboard_press():
-	var money = $Cubicle.buy_or_sell_stock(starting_money)
-	if money != null:
-		starting_money = money
+func _on_player_on_keyboard_press():	
+	if stock_bought == false:
+		$Cubicle.buy_stock(money)
+		stock_bought = true
+	else:
+		money = $Cubicle.sell_stock()
+		stock_bought = false
