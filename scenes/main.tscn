@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnu41q54wdxor"]
+[gd_scene load_steps=10 format=3 uid="uid://cnu41q54wdxor"]
 
 [ext_resource type="PackedScene" uid="uid://c3n8v6tuebklg" path="res://scenes/cubicle.tscn" id="1_5su8m"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_kgr46"]
 [ext_resource type="PackedScene" uid="uid://dgb5nci5nk2lk" path="res://scenes/player.tscn" id="2_tph2n"]
 [ext_resource type="PackedScene" uid="uid://bhhxhxw5g40n2" path="res://scenes/ceilingtiles.tscn" id="3_4hfco"]
+[ext_resource type="Script" path="res://scenes/keyboard_sound.gd" id="5_nlkt0"]
+[ext_resource type="AudioStream" uid="uid://bmsh4kochb5hk" path="res://office.ogg" id="6_ntnjq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1n7hi"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -37,5 +39,15 @@ transform = Transform3D(0.724785, 0, 0.688975, 0, 1, 0, -0.688975, 0, 0.724785, 
 
 [node name="Ceiling_Tiles" parent="." instance=ExtResource("3_4hfco")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -5.00316, 0.132992, -0.281459)
+
+[node name="KeyboardSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.653072, 0.759465, -0.582586)
+script = ExtResource("5_nlkt0")
+
+[node name="BackgroundNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ntnjq")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="on_keyboard_press" from="Player" to="." method="_on_player_on_keyboard_press"]

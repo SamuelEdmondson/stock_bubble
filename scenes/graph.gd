@@ -44,19 +44,23 @@ func _process(delta):
 	queue_redraw()
 	
 	if ($MarketEventTimer.is_stopped()):
+		is_in_positive_market_shift = false
+		is_in_negative_market_shift = false
+		is_in_bubble_market_shift = false
+		$MarketEventTimer.wait_time = randf_range(3, 10)
 		$MarketEventTimer.start()
 		print("stopped")
-		var num = randi_range(0, 5)
-		if num == 1:
+		var num = randi_range(0, 11)
+		if num == 11:
 			bubble_market_shift()
-		elif num in range(2, 4):
+		elif num in range(0, 6):
 			positive_market_shift()
 		else:
-			bubble_market_shift()
+			negative_market_shift()
 		
 	if ($NewPriceTimer.is_stopped()):
 		#$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Light".blink_positive_light()
-		$NewPriceTimer.wait_time = randf_range(.25, 1)
+		$NewPriceTimer.wait_time = randf_range(.25, .5)
 		$NewPriceTimer.start()
 		currentPrice = generate_next_price()
 		var shiftRatio = (currentPrice*1.0) / (lastPrice*1.0)
@@ -127,18 +131,18 @@ func negative_market_shift():
 func generate_next_price():
 	if is_in_positive_market_shift:
 		print("generated positive")
-		return lastPrice * randf_range(1, 1.05)
+		return lastPrice * randf_range(1, 1.20)
 		
 	if is_in_negative_market_shift:
 		print("generated negative")
-		return lastPrice * randf_range(.95, 0)
+		return lastPrice * randf_range(.80, 1)
 		
 	if is_in_bubble_market_shift:
 		print(lastPrice)
 		print("generated bubble")
-		return lastPrice * randf_range(.7, 0)
+		return lastPrice * randf_range(.5, 1)
 	
 	else:
 		print("generated normal")
 		print(lastPrice)
-		return lastPrice * randf_range(.95, 1.05)
+		return lastPrice * randf_range(.98, 1.02)

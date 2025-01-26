@@ -67,7 +67,9 @@ transform = Transform3D(6.66285, 2.98891e-09, 0.0683801, -2.98893e-09, 6.66321, 
 spot_range = 0.05
 script = ExtResource("3_lmec5")
 positive_color = Color(0.440646, 0.802349, 1, 1)
+positive_blink_interval = 0.1
 negative_color = Color(0.940097, 0.934591, 7.70092e-07, 1)
+negative_blink_interval = 0.1
 bubble_color = Color(0.847059, 0.0980392, 0, 1)
 bubble_blink_interval = 0.1
 
@@ -92,15 +94,13 @@ wait_time = 10.0
 one_shot = true
 
 [node name="BubbleShiftTimer" type="Timer" parent="SubViewport/Graph" index="2"]
-wait_time = 1.58
+wait_time = 1.5
 one_shot = true
 
 [node name="PositiveShiftTimer" type="Timer" parent="SubViewport/Graph" index="3"]
-wait_time = 5.0
 one_shot = true
 
 [node name="NegativeShiftTimer" type="Timer" parent="SubViewport/Graph" index="4"]
-wait_time = 5.0
 one_shot = true
 
 [node name="TextElements" type="Node2D" parent="SubViewport" index="1"]
@@ -124,7 +124,7 @@ script = ExtResource("6_ku3mi")
 [node name="DailyQuota" type="Label" parent="SubViewport/TextElements" index="1"]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Daily Quota: $2000"
+text = "Quota: $50000"
 
 [node name="Cash" type="Label" parent="SubViewport/TextElements" index="2"]
 offset_top = 20.0

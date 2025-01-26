@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds4vrslvakxo8"]
+[gd_scene load_steps=6 format=3 uid="uid://ds4vrslvakxo8"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_4h2k7"]
 [ext_resource type="PackedScene" uid="uid://bf2aiy4y7xrkf" path="res://scenes/MenuOffice.tscn" id="1_yii0s"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="2_utb01"]
+[ext_resource type="AudioStream" uid="uid://bmsh4kochb5hk" path="res://office.ogg" id="4_m0slw"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8q07p"]
 viewport_path = NodePath("Sprite3D/SubViewport")
@@ -42,5 +43,11 @@ offset_bottom = 70.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_m0slw")
+volume_db = -10.0
+autoplay = true
+parameters/looping = false
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
