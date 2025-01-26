@@ -4,6 +4,7 @@ signal on_keyboard_press
 @onready var camera = $Camera
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
+var starting_money = 100
 
 func ready():
 	pass

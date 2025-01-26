@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnu41q54wdxor"]
+[gd_scene load_steps=8 format=3 uid="uid://cnu41q54wdxor"]
 
 [ext_resource type="PackedScene" uid="uid://c3n8v6tuebklg" path="res://scenes/cubicle.tscn" id="1_5su8m"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_kgr46"]
 [ext_resource type="PackedScene" uid="uid://dgb5nci5nk2lk" path="res://scenes/player.tscn" id="2_tph2n"]
 [ext_resource type="PackedScene" uid="uid://bhhxhxw5g40n2" path="res://scenes/ceilingtiles.tscn" id="3_4hfco"]
 
@@ -19,6 +20,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_kgr46")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_plj0i")
@@ -36,4 +38,4 @@ transform = Transform3D(0.724785, 0, 0.688975, 0, 1, 0, -0.688975, 0, 0.724785, 
 [node name="Ceiling_Tiles" parent="." instance=ExtResource("3_4hfco")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -2.13848, 0.132992, -1.19549)
 
-[connection signal="on_keyboard_press" from="Player" to="Cubicle" method="_on_player_on_keyboard_press"]
+[connection signal="on_keyboard_press" from="Player" to="." method="_on_player_on_keyboard_press"]

@@ -1,11 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3n8v6tuebklg"]
+[gd_scene load_steps=11 format=3 uid="uid://c3n8v6tuebklg"]
 
 [ext_resource type="PackedScene" uid="uid://crx4dftjfrkon" path="res://office_assets/scene.gltf" id="1_inlig"]
 [ext_resource type="Script" path="res://scenes/cubicle.gd" id="2_lhw8d"]
 [ext_resource type="Script" path="res://scenes/graph.gd" id="3_vj3i6"]
 [ext_resource type="Script" path="res://scenes/price_text.gd" id="4_w8u0n"]
-[ext_resource type="Script" path="res://scenes/percentage.gd" id="5_x3dbi"]
-[ext_resource type="Script" path="res://scenes/profit.gd" id="6_ku3mi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c3lqt"]
 size = Vector3(1.47052, 0.105896, 0.717773)
@@ -79,19 +77,3 @@ offset_right = 40.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_5bag7")
 script = ExtResource("4_w8u0n")
-
-[node name="ProfitLabels" type="Node2D" parent="SubViewport/TextElements" index="1"]
-
-[node name="Percentage" type="Label" parent="SubViewport/TextElements/ProfitLabels" index="0"]
-offset_left = 50.0
-offset_top = 75.0
-offset_right = 90.0
-offset_bottom = 225.0
-script = ExtResource("5_x3dbi")
-
-[node name="Profit" type="Label" parent="SubViewport/TextElements/ProfitLabels" index="1"]
-offset_left = 15.0
-offset_top = 150.0
-offset_right = 16.0
-offset_bottom = 173.0
-script = ExtResource("6_ku3mi")
