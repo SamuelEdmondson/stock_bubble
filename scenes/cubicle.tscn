@@ -12,22 +12,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_c3lqt"]
 size = Vector3(1.47052, 0.105896, 0.717773)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qvtme"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3fgt"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2b23"]
-resource_local_to_scene = true
-backlight_enabled = true
-backlight = Color(1, 1, 1, 1)
-backlight_texture = SubResource("ViewportTexture_qvtme")
-refraction_enabled = true
-refraction_scale = 1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqf34"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mrc7a"]
 resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_mqf34")
 size = Vector2(2.6, 1.98)
 orientation = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3vlr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j6yv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5bag7"]
 font_size = 32
@@ -52,9 +47,9 @@ transform = Transform3D(1, -4.76456e-22, 1.35401e-23, -4.76456e-22, 1, 0, 1.4558
 
 [node name="Glowing Screen_Screen Emission_0" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen" index="0"]
 transform = Transform3D(1, 3.55271e-15, 0, 0, 1, 1.77636e-15, 0, -8.88178e-15, 1, 0.0260942, 0, -0.0531521)
-material_override = SubResource("StandardMaterial3D_l2b23")
+material_override = SubResource("StandardMaterial3D_y3fgt")
 mesh = SubResource("PlaneMesh_mrc7a")
-surface_material_override/0 = SubResource("StandardMaterial3D_p3vlr")
+surface_material_override/0 = SubResource("StandardMaterial3D_3j6yv")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Glowing Screen_Screen Emission_0" index="0"]
 transform = Transform3D(6.66321, -2.55795e-13, 0, 2.55795e-13, 6.66321, 1.42109e-13, 0, -9.9476e-14, 6.66321, 0.179669, 0.38669, 0.836814)
