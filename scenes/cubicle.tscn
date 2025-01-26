@@ -96,7 +96,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="BubbleShiftTimer" type="Timer" parent="SubViewport/Graph" index="2"]
-wait_time = 6.0
+wait_time = 1.58
 one_shot = true
 
 [node name="PositiveShiftTimer" type="Timer" parent="SubViewport/Graph" index="3"]

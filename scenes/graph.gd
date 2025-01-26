@@ -2,7 +2,7 @@ extends Node2D
 
 var points = []
 var counter = 0
-var lastPrice = 1000
+var lastPrice = round(9223372036854775807 * .5)
 var currentPrice
 var bought_price
 var sold_price
@@ -56,18 +56,18 @@ func _process(delta):
 		
 	if ($NewPriceTimer.is_stopped()):
 		#$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/Light".blink_positive_light()
-		$NewPriceTimer.wait_time = randf_range(.5, 1.5)
+		$NewPriceTimer.wait_time = randf_range(.25, 1)
 		$NewPriceTimer.start()
 		currentPrice = generate_next_price()
-		var shiftValue = lastPrice - currentPrice
-		
+		var shiftRatio = (currentPrice*1.0) / (lastPrice*1.0)
+		var shiftValue = log(lastPrice) - log(currentPrice)
 		if (currentPrice >= lastPrice):
 			$"../TextElements/PriceText".show_price_green(str(currentPrice))
 		else:
 			$"../TextElements/PriceText".show_price_red(str(currentPrice))
 		
 		for i in range(points.size()):
-			points[i].y = points[i].y - shiftValue
+			points[i].y = points[i].y - shiftValue*200
 		
 		points.append(Vector2(195, 100))
 		counter += 1
@@ -130,16 +130,18 @@ func negative_market_shift():
 func generate_next_price():
 	if is_in_positive_market_shift:
 		print("generated positive")
-		return lastPrice + randi_range(0, 30)
+		return round(lastPrice * randf_range(1, 1.05))
 		
 	if is_in_negative_market_shift:
 		print("generated negative")
-		return lastPrice + randi_range(-30, 0)
+		return round(lastPrice * randf_range(.95, 0))
 		
 	if is_in_bubble_market_shift:
+		print(lastPrice)
 		print("generated bubble")
-		return lastPrice + randi_range(-60, 0)
+		return round(lastPrice * randf_range(.7, 0))
 	
 	else:
 		print("generated normal")
-		return lastPrice + randi_range(-5, 5)
+		print(lastPrice)
+		return round(lastPrice * randf_range(.95, 1.05))
