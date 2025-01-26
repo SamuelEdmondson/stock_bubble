@@ -15,3 +15,7 @@ func buy_stock(money: int):
 func sell_stock():
 	print("sold stock!")
 	return $SubViewport/Graph.sell_stock()
+
+
+func _on_graph_won_game() -> void:
+	get_tree().change_scene_to_file("res://you_won.tscn")

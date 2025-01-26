@@ -7,6 +7,9 @@ var currentPrice
 var bought_price
 var sold_price
 var bought_with_money
+var quota = 10
+
+signal won_game
 
 var is_in_positive_market_shift = false
 var is_in_negative_market_shift = false
@@ -110,6 +113,10 @@ func sell_stock():
 	$"../TextElements/ProfitLabels/Profit".clear_profit()
 	$"../TextElements/Cash".update_cash(round(returned_money))
 	$"../TextElements/Portfolio".update_portfolio(0)
+	
+	#end game if they are above amount:
+	if returned_money >= quota:
+		get_tree().change_scene_to_file("res://you_won.tscn")
 	return returned_money
 
 func positive_market_shift():

@@ -139,5 +139,3 @@ offset_right = 40.0
 offset_bottom = 63.0
 text = "Portfolio: $0"
 script = ExtResource("8_cy4j3")
-
-[connection signal="won_game" from="SubViewport/Graph" to="." method="_on_graph_won_game"]

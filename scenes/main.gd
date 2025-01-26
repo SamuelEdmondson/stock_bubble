@@ -11,6 +11,7 @@ func _on_player_on_keyboard_press():
 		$KeyboardSound.press()
 		stock_bought = true
 	else:
+		get_tree().change_scene_to_file("res://titl_screen.gd")
 		money = $Cubicle.sell_stock()
 		stock_bought = false
 		$KeyboardSound.press()
