@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3n8v6tuebklg"]
+[gd_scene load_steps=18 format=3 uid="uid://c3n8v6tuebklg"]
 
 [ext_resource type="PackedScene" uid="uid://crx4dftjfrkon" path="res://office_assets/scene.gltf" id="1_inlig"]
 [ext_resource type="Script" path="res://scenes/cubicle.gd" id="2_lhw8d"]
@@ -27,6 +27,8 @@ orientation = 2
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3j6yv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_67pv2"]
+
+[sub_resource type="Theme" id="Theme_ew25n"]
 
 [node name="Cubicle" instance=ExtResource("1_inlig")]
 script = ExtResource("2_lhw8d")
@@ -129,21 +131,6 @@ offset_right = 11.0
 offset_bottom = 173.0
 script = ExtResource("6_ku3mi")
 
-[node name="FeeCost" type="Label" parent="SubViewport/TextElements/ProfitLabels" index="2"]
-offset_left = 117.765
-offset_top = 156.4
-offset_right = 190.765
-offset_bottom = 179.4
-label_settings = SubResource("LabelSettings_67pv2")
-script = ExtResource("9_vm2i4")
-
-[node name="FeeTimerLeft" type="Label" parent="SubViewport/TextElements/ProfitLabels" index="3"]
-offset_left = 172.74
-offset_top = 170.69
-offset_right = 212.74
-offset_bottom = 193.69
-script = ExtResource("10_q2tbu")
-
 [node name="DailyQuota" type="Label" parent="SubViewport/TextElements" index="1"]
 offset_right = 40.0
 offset_bottom = 23.0
@@ -162,5 +149,27 @@ offset_right = 40.0
 offset_bottom = 63.0
 text = "Portfolio: $0"
 script = ExtResource("8_cy4j3")
+
+[node name="FeeCost" type="Label" parent="SubViewport/TextElements" index="4"]
+offset_left = 117.765
+offset_top = 170.975
+offset_right = 190.765
+offset_bottom = 193.975
+text = "Fee: $500"
+label_settings = SubResource("LabelSettings_67pv2")
+script = ExtResource("9_vm2i4")
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport/TextElements" index="5"]
+offset_right = 4.0
+offset_bottom = 4.0
+theme = SubResource("Theme_ew25n")
+value = 90.0
+fill_mode = 1
+show_percentage = false
+
+[node name="FeeTimerLeft" type="Label" parent="SubViewport/TextElements" index="6"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("10_q2tbu")
 
 [connection signal="won_game" from="SubViewport/Graph" to="." method="_on_graph_won_game"]

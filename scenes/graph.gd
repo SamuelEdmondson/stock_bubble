@@ -8,6 +8,7 @@ var bought_price
 var sold_price
 var bought_with_money
 var quota = 10000
+var fee = 0
 
 signal won_game
 
@@ -28,6 +29,13 @@ func _ready():
 		#counter += 1
 
 func _process(delta):
+	
+	if (!$FeeTimer.is_stopped()):
+		$"../TextElements/ProfitLabels/FeeTimerLeft".update_fee_timer($FeeTimer.time_left)
+	else:
+		$"../TextElements/ProfitLabels/FeeCost".clear_fee_cost()
+		$"../TextElements/ProfitLabels/FeeTimerLeft".clear_fee_timer()
+		fee = 0
 	
 	if ($PositiveShiftTimer.is_stopped()):
 		#print("is_in_positive_market_shift is set to false")
@@ -101,10 +109,16 @@ func buy_stock(money: int):
 	$"../TextElements/ProfitLabels/Profit".update_profit(0)
 	$"../TextElements/Cash".update_cash(0)
 	$"../TextElements/Portfolio".update_portfolio(bought_with_money)
+	$FeeTimer.start()
+	fee = bought_with_money * .2
+	$"../TextElements/ProfitLabels/FeeCost".update_fee(bought_with_money * .2)
 	
 func sell_stock():
 	# They sell their shares recieving multiplied earning BUT there is a flat fee of 10 bucks (also maybe it will take some time to get out)
 	var returned_money = round(bought_with_money * currentPrice*1.0 / bought_price*1.0 - 10)
+	
+	if !$FeeTimer.is_stopped():
+		returned_money -= fee
 	print(currentPrice)
 	print(bought_price)
 	print("sold and got " + str(returned_money))
