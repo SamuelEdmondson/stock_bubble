@@ -30,6 +30,7 @@ func _process(delta):
 	queue_redraw()
 	
 	if ($NewPriceTimer.is_stopped()):
+		$"../../Sketchfab_model/c7ca0b3869ba42d1ace1e163b90d388b_fbx/RootNode/Glowing Screen/RedLight".blink_light()
 		$NewPriceTimer.wait_time = randf_range(1, 5)
 		$NewPriceTimer.start()
 		currentPrice = lastPrice + randi_range(-5, 5)
